@@ -1,7 +1,8 @@
 from django.shortcuts import render,get_object_or_404 , redirect
-from .models import Question
+from django.core.paginator import Paginator
 from django.utils import timezone
 from .forms import QuestionForm,AnswerForm
+from .models import Question
 # Create your views here.
 
 # def index(request):
@@ -13,8 +14,14 @@ def index(request):
   pybo 목록 출력
   """
 
+  page = request.GET.get('page','1') 
   question_list = Question.objects.order_by('-create_date')
-  context= {'question_list':question_list}
+  paginator = Paginator(question_list,10)
+  page_obj = paginator.get_page(page)
+  context = {'question_list':page_obj}
+
+  # question_list = Question.objects.order_by('-create_date')
+  # context= {'question_list':question_list}
 
   return render(request, 'pybo/question_list.html',context)
 
@@ -43,8 +50,7 @@ def answer_create(request, question_id):
   else:
     form = AnswerForm()
   context = {'question': question, 'form': form}
-  return redirect('pybo:detail', question_id=question.id)
-
+  return render(request, 'pybo/question_detail.html', context)
 
 def question_create(request):
   """
@@ -59,5 +65,5 @@ def question_create(request):
       return redirect('pybo:index')
   else:
     form = QuestionForm()
-    context = {'form': form}
-    return render(request, 'pybo/question_form.html', context)
+  context = {'form': form}
+  return render(request, 'pybo/question_form.html', context)

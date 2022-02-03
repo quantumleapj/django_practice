@@ -9,13 +9,20 @@
     <title>Hello, pybo!</title>
   </head>
 
-  <!-- jquery -->
-  <script src="{% static 'jquery-3.6.0.min.js' %}"></script>
-  <!-- bootstrap -->
-  <script src="{% static 'bootstrap.min.js' %}"></script>
   <body>
-    <!-- 기본 템플릿 안에 삽입될 내용 Start -->
-    {% block content %}{% endblock %}
-    <!-- 기본 템플릿 안에 삽입될 내용 End -->
+    <div class="container">
+      <div class="jumbotron mb-0 rounded-0">
+        <h1>pybo를 통한 Django 학습</h1>
+        <p class="lead">Django와 Bootstrap을 이용한 사이트 구축 학습</p>
+      </div>
+      {% include 'navbar.html' %}
+      <!-- 기본 템플릿 안에 삽입될 내용 Start -->
+      {% block content %}{% endblock %}
+      <!-- 기본 템플릿 안에 삽입될 내용 End -->
+    </div>
+    <!-- jquery -->
+    <script src="{% static 'jquery-3.6.0.min.js' %}"></script>
+    <!-- bootstrap -->
+    <script src="{% static 'bootstrap.min.js' %}"></script>
   </body>
 </html>

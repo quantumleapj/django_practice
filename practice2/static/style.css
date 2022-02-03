@@ -1,6 +1,13 @@
-textarea {
+/* textarea {
   width: 100%;
 }
 input[type="submit"] {
   margin-top: 10px;
+} */
+
+.jumbotron {
+  /* background-image: url("https://source.unsplash.com/random"); */
+  background-image: url("images/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
