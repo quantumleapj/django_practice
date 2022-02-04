@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'pybo',
     'common',
     # 'common.apps.CommonConfig',
-    # 'fontawesome-free'
+    'static.fontawesomefree'
 ]
 
 MIDDLEWARE = [

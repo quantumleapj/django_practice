@@ -10,7 +10,7 @@
       <tr class="thead-dark">
         <th>번호</th>
         <th>제목</th>
-        <th>작성일시</th>
+        <th style="width: 120px">작성일시</th>
       </tr>
     </thead>
     <tbody>
@@ -28,7 +28,7 @@
           <span class="badge badge-pill badge-primary"> {{ question.answer_set.count }}</span>
           {% endif %}
         </td>
-        <td>{{ question.create_date }}</td>
+        <td>{{ question.create_date|date:'Y-m-d' }}</td>
       </tr>
       {% endfor %} {% else %}
       <tr>
