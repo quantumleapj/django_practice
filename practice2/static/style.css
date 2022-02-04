@@ -11,3 +11,15 @@ input[type="submit"] {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.login-box,
+.sign-up-form {
+  width: 600px;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 40px 20px;
+}
+
+.avata-sm {
+  width: 20px;
+}
