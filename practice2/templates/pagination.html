@@ -1,0 +1,38 @@
+<!-- 페이징처리 시작 -->
+<ul class="pagination justify-content-center">
+  <!-- 이전페이지 -->
+  {% if page_object.has_previous %}
+  <li class="page-item">
+    <a class="page-link" href="?page={{ page_object.previous_page_number }}">이전</a>
+  </li>
+  {% else %}
+  <li class="page-item disabled">
+    <a class="page-link" tabindex="-1" aria-disabled="true" href="#"> 이전</a>
+  </li>
+  {% endif %}
+  <!-- 페이지리스트 -->
+  {% for page_number in page_object.paginator.page_range %}
+  <!--앞뒤 5개씩-->
+  {% if page_number >= page_object.number|add:-5 and page_object.number|add:5 >= page_number %}
+  <!-- 페이지넘버체크 -->
+  {% if page_number == page_object.number %}
+  <li class="page-item active" aria-current="page">
+    <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+  </li>
+  {% else %}
+  <li class="page-item">
+    <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+  </li>
+  {% endif %} {% endif %} {% endfor %}
+  <!-- 다음페이지 -->
+  {% if page_object.has_next %}
+  <li class="page-item">
+    <a class="page-link" href="?page={{ page_object.next_page_number }}">다음</a>
+  </li>
+  {% else %}
+  <li class="page-item disabled">
+    <a class="page-link" tabindex="-1" aria-disabled="true" href="#"> 다음</a>
+  </li>
+  {% endif %}
+</ul>
+<!-- 페이징처리 끝 -->

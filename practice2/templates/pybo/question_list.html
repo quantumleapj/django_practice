@@ -1,9 +1,11 @@
-{% extends 'base.html' %} {% block content %} {% load static %}
+{% extends 'base.html' %}
+<!-- 커스텀 필터 적용 -->
+{% load pybo_filter%} {% block content %} {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
 
 <div class="container my-3">
-  <table class="table">
+  <table class="table table-hover">
     <thead>
       <tr class="thead-dark">
         <th>번호</th>
@@ -14,9 +16,17 @@
     <tbody>
       {% if question_list %} {% for question in question_list %}
       <tr>
-        <td>{{ forloop.counter }}</td>
+        <!-- 1부터 10까지 -->
+        <!-- <td>{{ forloop.counter }}</td> -->
+        <!-- 번호 = 전체건수 -시작인덱스 -현재인덱스 +1  -->
+        <!-- <td>{{ question_list.paginator.count|sub:question_list.start_index|sub:forloop.counter0|add:1 }}</td> -->
+        <!-- 생성된 id 번호  -->
+        <td>{{question.id}}</td>
         <td>
           <a href="{% url 'pybo:detail' question.id %}"> {{ question.subject }}</a>
+          {% if question.answer_set.count > 0 %}
+          <span class="badge badge-pill badge-primary"> {{ question.answer_set.count }}</span>
+          {% endif %}
         </td>
         <td>{{ question.create_date }}</td>
       </tr>
@@ -27,15 +37,10 @@
       {% endif %}
     </tbody>
   </table>
+  {% include 'pagination.html' with page_object=question_list %}
+
   <a href="{% url 'pybo:question_create' %}" class="btn btn-primary"> 질문 등록하기</a>
+
+  <div class="text-right float-right">총: {{question_list.paginator.count}} 건</div>
 </div>
 {% endblock %}
-<!-- {% if question_list %}
-<ul>
-  {% for question in question_list %}
-  <li><a href="{% url 'pybo:detail' question.id %}">{{ question.subject }}</a></li>
-  {% endfor %}
-</ul>
-{% else %}
-<p>질문이 없습니다.</p>
-{% endif %} -->

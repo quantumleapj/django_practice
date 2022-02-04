@@ -1,6 +1,25 @@
-textarea {
+/* textarea {
   width: 100%;
 }
 input[type="submit"] {
   margin-top: 10px;
+} */
+
+.jumbotron {
+  /* background-image: url("https://source.unsplash.com/random"); */
+  background-image: url("images/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.login-box,
+.sign-up-form {
+  width: 600px;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 40px 20px;
+}
+
+.avata-sm {
+  width: 20px;
 }
