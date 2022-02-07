@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container my-3">
+  <form method="post" class="post-form">
+    {% csrf_token %} {% include "error/form_error.html" %}
+    <div class="form-group">
+      <label for="content">답변내용</label>
+      <textarea class="form-control" name="content" id="content" rows="10">{{ form.content.value|default_if_none:'' }}</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> 저장하기</button>
+    <a href="javascript:history.back()" class="btn btn-primary"><i class="fas fa-undo"></i> 돌아가기</a>
+  </form>
+</div>
+{% endblock %}
