@@ -23,3 +23,8 @@ input[type="submit"] {
 .avata-sm {
   width: 20px;
 }
+
+.comment {
+  border-top: dotted 1px #ddd;
+  font-size: 0.7em;
+}
