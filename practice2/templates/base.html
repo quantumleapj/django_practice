@@ -4,8 +4,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- bootstrap -->
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'fontawesome_all.min.css' %}" />
+    <!-- fontawesome -->
+    <link rel="stylesheet" type="text/css" href="{% static 'fontawesomefree/css/all.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
     <title>Hello, pybo!</title>
   </head>
@@ -25,5 +27,8 @@
     <script src="{% static 'jquery-3.6.0.min.js' %}"></script>
     <!-- bootstrap -->
     <script src="{% static 'bootstrap.min.js' %}"></script>
+
+    <!-- 스크립트 블럭 -->
+    {% block script %} {% endblock %}
   </body>
 </html>

@@ -3,7 +3,10 @@
   <div class="login-box border rounded shadow-sm">
     <h4 class="mb-5"><i class="fas fa-sign-in-alt"></i>로그인</h4>
     <form method="post" class="post-form" action="{% url 'common:login' %}">
-      {% csrf_token %} {% include "error/form_error.html" %}
+      {% csrf_token %}
+      <!-- 로그인 성공후 이동되는 url -->
+      <input type="hidden" name="next" value="{{ next }}" />
+      {% include "error/form_error.html" %}
       <div class="form-group">
         <label for="username">사용자ID</label>
         <input
@@ -28,7 +31,7 @@
       </div>
       <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>로그인</button>
 
-      <a href="{% url 'common:signup' %}" class="btn btn-primary"><i class="fas fa-sign-up-alt"></i>회원가입</a>
+      <a href="{% url 'common:signup' %}" class="btn btn-primary"><i class="fas fa-user-plus"></i>회원가입</a>
     </form>
   </div>
 </div>
