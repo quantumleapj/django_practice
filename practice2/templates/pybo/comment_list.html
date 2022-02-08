@@ -9,7 +9,7 @@
     </span>
     {% if request.user == comment.author %}
     <a href="{% url 'pybo:comment_modify_question' comment.id %}" class="small">수정</a>,
-    <a href="#" class="small delete" data-uri="{% url 'pybo:comment_delete_question' comment.id %}"> 삭제</a>
+    <a href="#" class="small delete" data-url="{% url 'pybo:comment_delete_question' comment.id %}"> 삭제</a>
     {% endif %}
   </div>
   {% endfor %}
@@ -17,6 +17,6 @@
 {% endif %}
 
 <div>
-  <a href="{% url 'pybo:comment_create_question' question.id %}" class="small"><small>댓글 추가 ..</small></a>
+  <a href="{% url 'pybo:comment_create_question' question.id %}" class="small"><small>댓글 추가 ....</small></a>
 </div>
 <!-- 질문 댓글 End -->
